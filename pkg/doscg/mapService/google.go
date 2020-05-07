@@ -49,5 +49,17 @@ func (gs googleService) FindBestWayFromSCGToCentrallWorld(origin string, destina
 	res.DestinationLocation.Name = leg.EndAddress
 	res.DestinationLocation.Location.Lat = leg.EndLocation.Lat
 	res.DestinationLocation.Location.Lng = leg.EndLocation.Lng
-	res.Polyline = routes[0].OverviewPolyline.Points
+
+	decodedPolylines, err := routes[0].OverviewPolyline.Decode()
+	if err != nil {
+		return res, err
+	}
+
+	for _, e := range decodedPolylines {
+		res.Polyline = append(res.Polyline, entity.LatLng{
+			Lat: e.Lat,
+			Lng: e.Lng,
+		})
+	}
+	return res, nil
 }
