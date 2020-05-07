@@ -3,6 +3,7 @@ module doscg
 go 1.14
 
 require (
+	github.com/golang/mock v1.4.3 // indirect
 	github.com/kr/pretty v0.2.0
 	github.com/sergi/go-diff v1.1.0 // indirect
 	github.com/stretchr/testify v1.5.1 // indirect
