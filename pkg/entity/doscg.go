@@ -24,5 +24,5 @@ type Place struct {
 type BestRoute struct {
 	OriginLocation      Place
 	DestinationLocation Place
-	Polyline            string
+	Polyline            []LatLng
 }
