@@ -1,0 +1,61 @@
+package usecase
+
+import (
+	"doscg/pkg/doscg"
+	"doscg/pkg/entity"
+)
+
+type doSCGUsecase struct {
+	gservice doscg.MapService
+}
+
+func NewDoSCGService(gs doscg.MapService) doscg.DoSCG {
+	return &doSCGUsecase{
+		gservice: gs,
+	}
+}
+
+func (ds doSCGUsecase) FindBC(ans1 int, ans2 int) entity.BC {
+	var a int = 21
+	var bc entity.BC
+
+	bc.B = ds.findNumber(a, ans1)
+	bc.C = ds.findNumber(a, ans2)
+
+	return bc
+}
+
+func (ds doSCGUsecase) findNumber(a int, ans int) int {
+	return ans - a
+}
+
+// FindXYZ - X, Y, 5, 9, 15, 23, Z  - Please create a new function for finding X, Y, Z value
+// X, Y, 5, 9, 15, 23, Z
+//  \/ \/ \/ \/  \/  \/
+//   0  2  4  6  8   10
+// So, Z = 23 + 10 = 33
+// Y = 5 - 2 = 3
+// X = Y - 0 = 3 - 0 = 3
+func (ds doSCGUsecase) FindXYZ() entity.XYZ {
+	var xyz entity.XYZ
+	xyz.X = ds.findX()
+	xyz.Y = ds.findY()
+	xyz.Z = ds.findZ()
+	return xyz
+}
+
+func (ds doSCGUsecase) findX() int {
+	return 3
+}
+
+func (ds doSCGUsecase) findY() int {
+	return 3
+}
+
+func (ds doSCGUsecase) findZ() int {
+	return 33
+}
+
+func (ds doSCGUsecase) FindBestWayToSCG(start string) {
+
+}
