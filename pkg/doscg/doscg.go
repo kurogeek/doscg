@@ -10,6 +10,7 @@ type DoSCG interface {
 	FindBestWayFromSCGToCentrallWorld() (entity.BestRoute, error)
 }
 
+//go:generate mockgen -destination=./usecase/mocks/mock_map.go -package=mocks doscg/pkg/doscg MapService
 type MapService interface {
 	FindBestWayFromSCGToCentrallWorld(origin string, destination string) (entity.BestRoute, error)
 }
