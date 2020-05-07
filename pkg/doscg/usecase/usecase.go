@@ -56,6 +56,15 @@ func (ds doSCGUsecase) findZ() int {
 	return 33
 }
 
-func (ds doSCGUsecase) FindBestWayToSCG(start string) {
+func (ds doSCGUsecase) FindBestWayFromSCGToCentrallWorld() (entity.BestRoute, error) {
+	var bestRoute entity.BestRoute
+	origin := "SCG สำนักงานใหญ่ บางซื่อ 1 Siam Cement Alley, Bang Sue, Bangkok 10800"
+	destination := "centralwOrld, 999/9 Rama I Rd, Pathum Wan, Pathum Wan District, Bangkok 10330"
 
+	bestRoute, err := ds.gservice.FindBestWayFromSCGToCentrallWorld(origin, destination)
+	if err != nil {
+		return bestRoute, err
+	}
+
+	return bestRoute, nil
 }

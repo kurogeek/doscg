@@ -11,10 +11,18 @@ type BC struct {
 	C int
 }
 
-type GeocodedWaypoints struct {
-	GeocodedStatus string
-	PlaceID        string
+type LatLng struct {
+	Lat float64
+	Lng float64
 }
 
-type Route struct {
+type Place struct {
+	Name     string
+	Location LatLng
+}
+
+type BestRoute struct {
+	OriginLocation      Place
+	DestinationLocation Place
+	Polyline            string
 }

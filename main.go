@@ -15,13 +15,17 @@ func main() {
 	request := maps.DirectionsRequest{
 		Origin:      "SCG สำนักงานใหญ่ บางซื่อ 1 Siam Cement Alley, Bang Sue, Bangkok 10800",
 		Destination: "centralwOrld, 999/9 Rama I Rd, Pathum Wan, Pathum Wan District, Bangkok 10330",
+		// Origin:      "asfwefasdfa",
+		// Destination: "t34sdsfsdf",
+
 	}
 	route, waypoint, err := gc.Directions(context.Background(), &request)
 	if err != nil {
 		panic(err)
 	}
 
-	pretty.Println(route, waypoint)
+	pretty.Println(route, waypoint, route[0].Legs[0].StartAddress)
+	pretty.Println(route[0].OverviewPolyline.Decode())
 }
 
 type XYZ struct {

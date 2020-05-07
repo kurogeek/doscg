@@ -7,9 +7,9 @@ import (
 type DoSCG interface {
 	FindXYZ() entity.XYZ
 	FindBC(ans1 int, ans2 int) entity.BC
-	FindBestWayToSCG(start string)
+	FindBestWayFromSCGToCentrallWorld() (entity.BestRoute, error)
 }
 
 type MapService interface {
-	FindBestWayToSCG(start string)
+	FindBestWayFromSCGToCentrallWorld(origin string, destination string) (entity.BestRoute, error)
 }
