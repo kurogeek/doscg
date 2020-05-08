@@ -26,3 +26,8 @@ type BestRoute struct {
 	DestinationLocation Place
 	Polyline            []LatLng
 }
+
+type BotMessage struct {
+	ReplyToken string
+	Text       string
+}

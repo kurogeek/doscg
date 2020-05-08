@@ -12,15 +12,19 @@ type googleService struct {
 	GoogleClient *maps.Client
 }
 
-func NewGoogleClient(key string) (*maps.Client, error) {
-	gc, err := maps.NewClient(maps.WithAPIKey(key))
-	return gc, err
-}
-
-func NewGoogleService(mc *maps.Client) doscg.MapService {
+func NewGoogleService(key string) (doscg.MapService, error) {
+	mc, err := newGoogleClient(key)
+	if err != nil {
+		return &googleService{}, err
+	}
 	return &googleService{
 		GoogleClient: mc,
-	}
+	}, nil
+}
+
+func newGoogleClient(key string) (*maps.Client, error) {
+	gc, err := maps.NewClient(maps.WithAPIKey(key))
+	return gc, err
 }
 
 func (gs googleService) FindBestWayFromSCGToCentrallWorld(origin string, destination string) (entity.BestRoute, error) {

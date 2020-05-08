@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/kr/pretty"
+	"github.com/utahta/go-linenotify"
 	"googlemaps.github.io/maps"
 )
 
@@ -26,7 +27,32 @@ func main() {
 
 	pretty.Println(route, waypoint, route[0].Legs[0].StartAddress)
 	pretty.Println(route[0].OverviewPolyline.Decode())
+
+	testnotify()
 }
+
+func testnotify() {
+	lc := linenotify.New()
+	response, err := lc.NotifyMessage("WMhmHFoQTjRNePmsPwcZ2wDva4qhugSWYfi6sXScFwe", "hello world")
+	if err != nil {
+		panic(err)
+	}
+	pretty.Println(response)
+}
+
+// func botTest() {
+// 	bot, err := linebot.New("secret", "token")
+// 	if err != nil {
+// 		panic(err)
+// 	}
+
+// 	events, err := bot.ParseRequest()
+// 	bot.ReplyMessage()
+// 	linebot.Event
+// 	linebot.EventTypeMessage
+// 	linebot.NewTextMessage()
+// 	bot.ReplyMessage()
+// }
 
 type XYZ struct {
 	X int
