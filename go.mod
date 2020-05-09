@@ -11,4 +11,5 @@ require (
 	github.com/stretchr/testify v1.5.1 // indirect
 	github.com/utahta/go-linenotify v0.4.2
 	googlemaps.github.io/maps v1.1.2
+	gotest.tools/v3 v3.0.2
 )
