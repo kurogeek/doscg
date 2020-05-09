@@ -10,6 +10,8 @@ type doSCGUsecase struct {
 	messageService doscg.MessageService
 }
 
+var messageList = [...]string{"hi", "hello"}
+
 func NewDoSCGService(gs doscg.MapService, ms doscg.MessageService) doscg.DoSCG {
 	return &doSCGUsecase{
 		mapService:     gs,
@@ -71,10 +73,20 @@ func (ds doSCGUsecase) FindBestWayFromSCGToCentrallWorld() (entity.BestRoute, er
 	return bestRoute, nil
 }
 
-func (ds doSCGUsecase) BotHandler(replyMessage entity.BotMessage) error {
-	if replyMessage.Text == "hello" || replyMessage.Text == "hi" {
-		replyMessage.Text = "Hi, how can I help you?"
+func (ds doSCGUsecase) BotHandler(inMessage entity.BotMessage) error {
+	replyMessage := inMessage
+	replyMessage.Text = ds.getReplyMessage(inMessage.Text)
+	if replyMessage.Text != "" {
 		return ds.messageService.SendReply(replyMessage)
 	}
 	return ds.messageService.NotifyBotError("Error! bot cannot handle request.")
+}
+
+func (ds doSCGUsecase) getReplyMessage(in string) string {
+	for _, v := range messageList {
+		if v == in {
+			return "Hi, how can I help you?"
+		}
+	}
+	return ""
 }
