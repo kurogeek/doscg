@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/kr/pretty"
+	"github.com/line/line-bot-sdk-go/linebot"
 	"github.com/utahta/go-linenotify"
 	"googlemaps.github.io/maps"
 )
@@ -40,19 +41,19 @@ func testnotify() {
 	pretty.Println(response)
 }
 
-// func botTest() {
-// 	bot, err := linebot.New("secret", "token")
-// 	if err != nil {
-// 		panic(err)
-// 	}
+func botTest() {
+	bot, err := linebot.New("secret", "token")
+	if err != nil {
+		panic(err)
+	}
 
-// 	events, err := bot.ParseRequest()
-// 	bot.ReplyMessage()
-// 	linebot.Event
-// 	linebot.EventTypeMessage
-// 	linebot.NewTextMessage()
-// 	bot.ReplyMessage()
-// }
+	events, err := bot.ParseRequest()
+	bot.ReplyMessage()
+	linebot.Event
+	linebot.EventTypeMessage
+	linebot.NewTextMessage()
+	bot.ReplyMessage()
+}
 
 type XYZ struct {
 	X int
