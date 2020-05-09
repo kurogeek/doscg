@@ -34,7 +34,7 @@ func (m *MockMessageService) EXPECT() *MockMessageServiceMockRecorder {
 }
 
 // NotifyBotError mocks base method
-func (m *MockMessageService) NotifyBotError(arg0 entity.BotMessage) error {
+func (m *MockMessageService) NotifyBotError(arg0 string) error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "NotifyBotError", arg0)
 	ret0, _ := ret[0].(error)
