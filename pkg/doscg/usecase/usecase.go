@@ -6,12 +6,14 @@ import (
 )
 
 type doSCGUsecase struct {
-	gservice doscg.MapService
+	mapService     doscg.MapService
+	messageService doscg.MessageService
 }
 
-func NewDoSCGService(gs doscg.MapService) doscg.DoSCG {
+func NewDoSCGService(gs doscg.MapService, ms doscg.MessageService) doscg.DoSCG {
 	return &doSCGUsecase{
-		gservice: gs,
+		mapService:     gs,
+		messageService: ms,
 	}
 }
 
@@ -61,10 +63,18 @@ func (ds doSCGUsecase) FindBestWayFromSCGToCentrallWorld() (entity.BestRoute, er
 	origin := "SCG สำนักงานใหญ่ บางซื่อ 1 Siam Cement Alley, Bang Sue, Bangkok 10800"
 	destination := "centralwOrld, 999/9 Rama I Rd, Pathum Wan, Pathum Wan District, Bangkok 10330"
 
-	bestRoute, err := ds.gservice.FindBestWayFromSCGToCentrallWorld(origin, destination)
+	bestRoute, err := ds.mapService.FindBestWayFromSCGToCentrallWorld(origin, destination)
 	if err != nil {
 		return bestRoute, err
 	}
 
 	return bestRoute, nil
+}
+
+func (ds doSCGUsecase) BotHandler(replyMessage entity.BotMessage) error {
+	if replyMessage.Text == "hello" || replyMessage.Text == "hi" {
+		replyMessage.Text = "Hi, how can I help you?"
+		return ds.messageService.SendReply(replyMessage)
+	}
+	return ds.messageService.NotifyBotError("Error! bot cannot handle request.")
 }
