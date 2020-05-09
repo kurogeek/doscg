@@ -18,6 +18,6 @@ type MapService interface {
 
 //go:generate mockgen -destination=./usecase/mocks/mock_message.go -package=mocks doscg/pkg/doscg MessageService
 type MessageService interface {
-	SendReply(replyMessage entity.BotMessage) error
+	SendReply(inMessage entity.BotMessage) error
 	NotifyBotError(notiText string) error
 }
