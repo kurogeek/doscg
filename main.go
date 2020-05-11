@@ -6,9 +6,14 @@ import (
 	"github.com/kr/pretty"
 	"github.com/utahta/go-linenotify"
 	"googlemaps.github.io/maps"
+
+	"github.com/jarcoal/httpmock"
 )
 
 func main() {
+	httpmock.Activate()
+	defer httpmock.DeactivateAndReset()
+
 	gc, err := maps.NewClient(maps.WithAPIKey("AIzaSyBVVZgNZxWGcQqgC4H00a3hDA_-0FMZ2wk"))
 	if err != nil {
 		panic(err)
