@@ -4,7 +4,6 @@ import (
 	"context"
 	"doscg/pkg/doscg"
 	"doscg/pkg/entity"
-	"net/http"
 
 	"googlemaps.github.io/maps"
 )
@@ -13,10 +12,8 @@ type googleService struct {
 	GoogleClient *maps.Client
 }
 
-func NewGoogleService(key string, options ...maps.ClientOption) (doscg.MapService, error) {
-	keyOption := maps.WithAPIKey(key)
-	options = append(options, keyOption)
-	mc, err := newGoogleClient(options...)
+func NewGoogleService(key string) (doscg.MapService, error) {
+	mc, err := newGoogleClient(key)
 	if err != nil {
 		return &googleService{}, err
 	}
@@ -25,12 +22,8 @@ func NewGoogleService(key string, options ...maps.ClientOption) (doscg.MapServic
 	}, nil
 }
 
-func WithHTTPClient(c *http.Client) maps.ClientOption {
-	return maps.WithHTTPClient(c)
-}
-
-func newGoogleClient(options ...maps.ClientOption) (*maps.Client, error) {
-	gc, err := maps.NewClient(options...)
+func newGoogleClient(key string) (*maps.Client, error) {
+	gc, err := maps.NewClient(maps.WithAPIKey(key))
 	return gc, err
 }
 
