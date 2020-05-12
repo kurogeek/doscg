@@ -1,0 +1,166 @@
+{
+    "geocoded_waypoints": [
+       {
+          "geocoder_status": "OK",
+          "place_id": "ChIJifGY5ogw2jARl0WT_eN0JKA",
+          "types": [
+             "airport",
+             "establishment",
+             "point_of_interest"
+          ]
+       },
+       {
+          "geocoder_status": "OK",
+          "partial_match": true,
+          "place_id": "ChIJN16-o2Qw2jARYD2lMk7tI48",
+          "types": [
+             "establishment",
+             "point_of_interest",
+             "shopping_mall"
+          ]
+       }
+    ],
+    "routes": [
+       {
+          "bounds": {
+             "northeast": {
+                "lat": 18.7720534,
+                "lng": 98.9760302
+             },
+             "southwest": {
+                "lat": 18.766545,
+                "lng": 98.9684594
+             }
+          },
+          "copyrights": "Map data ©2020",
+          "legs": [
+             {
+                "distance": {
+                   "text": "1.6 km",
+                   "value": 1592
+                },
+                "duration": {
+                   "text": "6 mins",
+                   "value": 384
+                },
+                "end_address": "2 Mahidol Rd, Tambon Pa Daet, Amphoe Mueang Chiang Mai, Chang Wat Chiang Mai 50100, Thailand",
+                "end_location": {
+                   "lat": 18.7702169,
+                   "lng": 98.9749753
+                },
+                "start_address": "Chiang Mai International Airport (CNX), 60 Mahidol Rd, Amphoe Mueang Chiang Mai, Chang Wat Chiang Mai 50200, Thailand",
+                "start_location": {
+                   "lat": 18.766545,
+                   "lng": 98.968487
+                },
+                "steps": [
+                   {
+                      "distance": {
+                         "text": "19 m",
+                         "value": 19
+                      },
+                      "duration": {
+                         "text": "1 min",
+                         "value": 5
+                      },
+                      "end_location": {
+                         "lat": 18.766714,
+                         "lng": 98.9684855
+                      },
+                      "html_instructions": "Head <b>north</b>",
+                      "polyline": {
+                         "points": "{ipqBax`{Qa@?"
+                      },
+                      "start_location": {
+                         "lat": 18.766545,
+                         "lng": 98.968487
+                      },
+                      "travel_mode": "DRIVING"
+                   },
+                   {
+                      "distance": {
+                         "text": "0.6 km",
+                         "value": 586
+                      },
+                      "duration": {
+                         "text": "3 mins",
+                         "value": 196
+                      },
+                      "end_location": {
+                         "lat": 18.7719799,
+                         "lng": 98.9684637
+                      },
+                      "html_instructions": "Continue straight",
+                      "maneuver": "straight",
+                      "polyline": {
+                         "points": "}jpqBax`{QmF?iD@mA?yB?c@?eA@sD?U?iA?E?E?I?K?M?O@"
+                      },
+                      "start_location": {
+                         "lat": 18.766714,
+                         "lng": 98.9684855
+                      },
+                      "travel_mode": "DRIVING"
+                   },
+                   {
+                      "distance": {
+                         "text": "0.8 km",
+                         "value": 825
+                      },
+                      "duration": {
+                         "text": "2 mins",
+                         "value": 128
+                      },
+                      "end_location": {
+                         "lat": 18.7701324,
+                         "lng": 98.97577179999999
+                      },
+                      "html_instructions": "Turn <b>right</b>",
+                      "maneuver": "turn-right",
+                      "polyline": {
+                         "points": "{kqqB{w`{QG?E??w@@u@@q@@q@?I?GAcA?g@BUJaBPcBP}AFo@LmARiBBGFWBMBGLa@Zy@BIj@kAFMb@w@FMFMXk@LSLWDGJWNYLYBIBM@SBa@"
+                      },
+                      "start_location": {
+                         "lat": 18.7719799,
+                         "lng": 98.9684637
+                      },
+                      "travel_mode": "DRIVING"
+                   },
+                   {
+                      "distance": {
+                         "text": "0.2 km",
+                         "value": 162
+                      },
+                      "duration": {
+                         "text": "1 min",
+                         "value": 55
+                      },
+                      "end_location": {
+                         "lat": 18.7702169,
+                         "lng": 98.9749753
+                      },
+                      "html_instructions": "Sharp <b>right</b> at <b>Route 1141</b><div style=\"font-size:0.9em\">Destination will be on the left</div>",
+                      "maneuver": "turn-sharp-right",
+                      "polyline": {
+                         "points": "i`qqBqeb{QAM?I?GAMFCHA@L?H@F@LBHDHHNJRGF?@CFS^ABQZOXA?"
+                      },
+                      "start_location": {
+                         "lat": 18.7701324,
+                         "lng": 98.97577179999999
+                      },
+                      "travel_mode": "DRIVING"
+                   }
+                ],
+                "traffic_speed_entry": [],
+                "via_waypoint": []
+             }
+          ],
+          "overview_polyline": {
+             "points": "{ipqBax`{Q_\\B_D@M?@mBBuBAkBNwBx@_IVqBJe@p@mBnCmFn@qAPc@Da@@o@?QAMFCHA@L@PDVNXJRGFCHUb@c@t@"
+          },
+          "summary": "Route 1141",
+          "warnings": [],
+          "waypoint_order": []
+       }
+    ],
+    "status": "OK"
+ }

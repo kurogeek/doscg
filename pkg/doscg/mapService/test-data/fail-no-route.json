@@ -1,0 +1,16 @@
+{
+    "geocoded_waypoints": [
+        {
+            "geocoder_status": "OK",
+            "place_id": "ChIJe5WIpnOc4jARoEQ-IqXo9HA",
+            "types": []
+        },
+        {
+            "geocoder_status": "OK",
+            "place_id": "ChIJ4VX0ws-e4jARBGaQ2IACrcQ",
+            "types": []
+        }
+    ],
+    "routes": [],
+    "status": "OK"
+}
