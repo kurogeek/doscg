@@ -18,7 +18,8 @@ func TestSendReply(t *testing.T) {
 		lService, err := NewMessageService("test-notitoken", "test-secret", "test-chan-token")
 		assert.NilError(t, err)
 
-		httpmock.RegisterResponder("POST", url)
+		httpmock.RegisterResponder("POST", url,
+			httpmock.NewStringResponder(500, "{}"))
 
 		replyMessage := entity.BotMessage{
 			ReplyToken: "test-reply-token",
@@ -26,7 +27,83 @@ func TestSendReply(t *testing.T) {
 		}
 		err = lService.SendReply(replyMessage)
 
-		t.Log(err)
+		assert.ErrorContains(t, err, "500")
+	})
+	t.Run("fail-too-many-request", func(t *testing.T) {
+		lService, err := NewMessageService("test-notitoken", "test-secret", "test-chan-token")
+		assert.NilError(t, err)
+
+		httpmock.RegisterResponder("POST", url,
+			httpmock.NewStringResponder(429, "{}"))
+
+		replyMessage := entity.BotMessage{
+			ReplyToken: "test-reply-token",
+			Text:       "test reply",
+		}
+		err = lService.SendReply(replyMessage)
+
+		assert.ErrorContains(t, err, "429")
+	})
+	t.Run("fail-forbidden", func(t *testing.T) {
+		lService, err := NewMessageService("test-notitoken", "test-secret", "test-chan-token")
+		assert.NilError(t, err)
+
+		httpmock.RegisterResponder("POST", url,
+			httpmock.NewStringResponder(403, "{}"))
+
+		replyMessage := entity.BotMessage{
+			ReplyToken: "test-reply-token",
+			Text:       "test reply",
+		}
+		err = lService.SendReply(replyMessage)
+
+		assert.ErrorContains(t, err, "403")
+	})
+	t.Run("fail-unauthorized", func(t *testing.T) {
+		lService, err := NewMessageService("test-notitoken", "test-secret", "test-chan-token")
+		assert.NilError(t, err)
+
+		httpmock.RegisterResponder("POST", url,
+			httpmock.NewStringResponder(401, "{}"))
+
+		replyMessage := entity.BotMessage{
+			ReplyToken: "test-reply-token",
+			Text:       "test reply",
+		}
+		err = lService.SendReply(replyMessage)
+
+		assert.ErrorContains(t, err, "401")
+	})
+	t.Run("fail-bad-request", func(t *testing.T) {
+		lService, err := NewMessageService("test-notitoken", "test-secret", "test-chan-token")
+		assert.NilError(t, err)
+
+		httpmock.RegisterResponder("POST", url,
+			httpmock.NewStringResponder(400, "{}"))
+
+		replyMessage := entity.BotMessage{
+			ReplyToken: "test-reply-token",
+			Text:       "test reply",
+		}
+		err = lService.SendReply(replyMessage)
+
+		assert.ErrorContains(t, err, "400")
+	})
+
+	t.Run("success", func(t *testing.T) {
+		lService, err := NewMessageService("test-notitoken", "test-secret", "test-chan-token")
+		assert.NilError(t, err)
+
+		httpmock.RegisterResponder("POST", url,
+			httpmock.NewStringResponder(200, "{}"))
+
+		replyMessage := entity.BotMessage{
+			ReplyToken: "test-reply-token",
+			Text:       "test reply",
+		}
+		err = lService.SendReply(replyMessage)
+
+		assert.NilError(t, err)
 	})
 
 }
