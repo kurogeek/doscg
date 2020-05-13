@@ -12,8 +12,6 @@ import (
 
 const filePath = "./test-data/"
 
-func TestNewGoogleService(t *testing.T) {}
-
 func TestFindBestWayFromSCGToCentrallWorld(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
