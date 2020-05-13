@@ -112,4 +112,54 @@ func TestNotifyBotError(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
+	url := "https://notify-api.line.me/api/notify"
+
+	t.Run("fail-internal-error", func(t *testing.T) {
+		lService, err := NewMessageService("test-notitoken", "test-secret", "test-chan-token")
+		assert.NilError(t, err)
+
+		httpmock.RegisterResponder("POST", url,
+			httpmock.NewStringResponder(500, "{\"message\":\"Failure due to server error\"}"))
+
+		err = lService.NotifyBotError("test notify")
+
+		assert.ErrorContains(t, err, "server error")
+
+	})
+	t.Run("fail-invalid-token", func(t *testing.T) {
+		lService, err := NewMessageService("test-notitoken", "test-secret", "test-chan-token")
+		assert.NilError(t, err)
+
+		httpmock.RegisterResponder("POST", url,
+			httpmock.NewStringResponder(401, "{\"message\":\"Invalid access token\"}"))
+
+		err = lService.NotifyBotError("test notify")
+
+		assert.ErrorContains(t, err, "invalid access token")
+
+	})
+	t.Run("fail-bad-request", func(t *testing.T) {
+		lService, err := NewMessageService("test-notitoken", "test-secret", "test-chan-token")
+		assert.NilError(t, err)
+
+		httpmock.RegisterResponder("POST", url,
+			httpmock.NewStringResponder(400, "{\"message\":\"Bad request\"}"))
+
+		err = lService.NotifyBotError("test notify")
+
+		assert.ErrorContains(t, err, "Bad request")
+
+	})
+	t.Run("success", func(t *testing.T) {
+		lService, err := NewMessageService("test-notitoken", "test-secret", "test-chan-token")
+		assert.NilError(t, err)
+
+		httpmock.RegisterResponder("POST", url,
+			httpmock.NewStringResponder(200, "{\"message\":\"ok\"}"))
+
+		err = lService.NotifyBotError("test notify")
+
+		assert.NilError(t, err)
+
+	})
 }
