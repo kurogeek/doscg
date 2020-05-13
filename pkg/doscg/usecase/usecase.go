@@ -3,6 +3,7 @@ package usecase
 import (
 	"doscg/pkg/doscg"
 	"doscg/pkg/entity"
+	"time"
 )
 
 type doSCGUsecase struct {
@@ -79,6 +80,7 @@ func (ds doSCGUsecase) BotHandler(inMessage entity.BotMessage) error {
 	if replyMessage.Text != "" {
 		return ds.messageService.SendReply(replyMessage)
 	}
+	time.Sleep(10 * time.Second)
 	return ds.messageService.NotifyBotError("Error! bot cannot handle request.")
 }
 
