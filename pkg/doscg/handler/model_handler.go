@@ -11,7 +11,10 @@ type ErrorMessage struct {
 }
 
 type DataMessage struct {
-	ID         string      `json:"id,omitempty"`
 	Type       string      `json:"type"`
 	Attributes interface{} `json:"attributes,omitempty"`
+}
+
+type Success struct {
+	Status string `json:"status"`
 }
