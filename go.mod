@@ -6,6 +6,8 @@ require (
 	github.com/golang/mock v1.4.3
 	github.com/jarcoal/httpmock v1.0.5
 	github.com/kr/pretty v0.2.0
+	github.com/labstack/echo v3.3.10+incompatible
+	github.com/labstack/gommon v0.3.0 // indirect
 	github.com/line/line-bot-sdk-go v7.3.0+incompatible
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/sergi/go-diff v1.1.0 // indirect
