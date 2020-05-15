@@ -34,6 +34,8 @@ func main() {
 
 	handler.NewDoSCGHandler(e, scgUsecase, botChanSecret)
 
-	e.Logger.Fatal(e.Start(":8080"))
+	port := os.Getenv("PORT")
+
+	e.Logger.Fatal(e.Start(":" + port))
 
 }
