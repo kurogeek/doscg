@@ -19,6 +19,9 @@ func NewDoSCGHandler(e *echo.Echo, du doscg.DoSCG, lineSec string) {
 		LineSecretChannel: lineSec,
 	}
 	e.GET("/find-xyz", handler.FindXYZ)
+	e.GET("/find-bc", handler.FindBC)
+	e.GET("/findBestWayFromSCGToCentrallWorld", handler.FindBestWayFromSCGToCentrallWorld)
+	e.POST("/callback", handler.BotHandler)
 }
 
 func (dh DoSCGHandler) FindXYZ(c echo.Context) error {
