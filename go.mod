@@ -3,6 +3,7 @@ module doscg
 go 1.14
 
 require (
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
 	github.com/golang/mock v1.4.3
 	github.com/jarcoal/httpmock v1.0.5
 	github.com/kr/pretty v0.2.0
