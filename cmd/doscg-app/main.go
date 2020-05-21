@@ -31,6 +31,7 @@ func main() {
 
 	e := echo.New()
 	e.Use(middleware.Logger())
+	e.Use(middleware.CORS())
 
 	handler.NewDoSCGHandler(e, scgUsecase, botChanSecret)
 
